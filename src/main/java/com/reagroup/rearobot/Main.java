@@ -1,12 +1,15 @@
 package com.reagroup.rearobot;
 
+import com.reagroup.rearobot.command.ReportCommand;
+import com.reagroup.rearobot.configuration.Configuration;
 import com.reagroup.rearobot.configuration.Orientation;
 import com.reagroup.rearobot.configuration.Position;
-import com.reagroup.rearobot.input.CommandCreator;
+import com.reagroup.rearobot.input.CommandParser;
 import com.reagroup.rearobot.input.Input;
 import com.reagroup.rearobot.input.Sanitizer;
 import com.reagroup.rearobot.robot.Robot;
 import com.reagroup.rearobot.robot.RobotBuilder;
+import com.reagroup.rearobot.configuration.Transition;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,23 +18,31 @@ import java.util.logging.Logger;
  * Created by dchrist on 04.04.2016.
  */
 public class Main {
-    private final static Logger LOGGER = Logger.getLogger(Main.class.getName());
+
+    private static final Position BOUNDARY = new Position(5, 5);
+    private static final Configuration START_CONFIGURATION = new Configuration(new Position(0, 0), Orientation.NORTH);
 
     public static void main(String[] args) {
         setUpLogging();
+        Robot robot = buildRobot();
+        runSimulator(args, robot);
+    }
 
-        LOGGER.info("Hello World!");
-        Robot robot = new RobotBuilder()
-                .initialPosition(new Position(0, 0), Orientation.NORTH)
-                .northEastBoundary(new Position(5, 5))
-                .build();
-
+    private static void runSimulator(String[] args, Robot robot) {
         new Input().apply(args)
                 .map(new Sanitizer())
-                .map(new CommandCreator())
+                .map(new CommandParser())
                 .map(robot)
-                // TODO: only print if command was report
+                .filter(transition -> transition.by() instanceof ReportCommand)
+                .map(Transition::to)
                 .forEach(System.out::println);
+    }
+
+    private static Robot buildRobot() {
+        return new RobotBuilder()
+                .initialConfiguration(START_CONFIGURATION)
+                .northEastBoundary(BOUNDARY)
+                .build();
     }
 
     private static void setUpLogging() {

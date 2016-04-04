@@ -3,7 +3,6 @@ package com.reagroup.rearobot.robot;
 import com.reagroup.rearobot.configuration.Configuration;
 import com.reagroup.rearobot.configuration.Orientation;
 import com.reagroup.rearobot.configuration.Position;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Created by dchrist on 04.04.2016.
@@ -13,13 +12,13 @@ public class RobotBuilder {
     private Position boundary;
     private Configuration configuration;
 
-    public RobotBuilder initialPosition(Configuration configuration) {
+    public RobotBuilder initialConfiguration(Configuration configuration) {
         this.configuration = configuration;
         return this;
     }
 
-    public RobotBuilder initialPosition(Position position, Orientation orientation) {
-        this.initialPosition(new Configuration(position, orientation));
+    public RobotBuilder initialConfiguration(Position position, Orientation orientation) {
+        this.initialConfiguration(new Configuration(position, orientation));
         return this;
     }
 

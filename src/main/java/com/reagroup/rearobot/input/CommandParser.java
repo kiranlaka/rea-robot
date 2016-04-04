@@ -8,7 +8,7 @@ import java.util.function.Function;
 /**
  * Created by dchrist on 04.04.2016.
  */
-public class CommandCreator implements Function<String, Command> {
+public class CommandParser implements Function<String, Command> {
     @Override
     public Command apply(String s) {
         throw new NotImplementedException();
