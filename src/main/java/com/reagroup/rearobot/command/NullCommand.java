@@ -3,9 +3,10 @@ package com.reagroup.rearobot.command;
 import com.reagroup.rearobot.configuration.Configuration;
 
 /**
- * Applies no transition to the robot but indicates a report should be made in the simulator's main().
+ * Returns the unmodified input, thus causes no configuration change.
+ * Used as null-object in fault cases.
  */
-public class ReportCommand implements Command {
+public class NullCommand implements Command {
     @Override
     public Configuration apply(Configuration configuration) {
         return configuration;

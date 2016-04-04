@@ -5,7 +5,7 @@ import com.reagroup.rearobot.configuration.Configuration;
 import com.reagroup.rearobot.configuration.Position;
 import com.reagroup.rearobot.configuration.Transition;
 import com.reagroup.rearobot.input.CommandParser;
-import com.reagroup.rearobot.input.Sanitizer;
+import com.reagroup.rearobot.input.Sanitiser;
 import com.reagroup.rearobot.robot.Robot;
 import com.reagroup.rearobot.robot.RobotBuilder;
 import org.junit.Before;
@@ -17,9 +17,6 @@ import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by dchrist on 04.04.2016.
- */
 public class ToyRobotSimulatorIT {
 
     private Robot robot;
@@ -48,7 +45,7 @@ public class ToyRobotSimulatorIT {
 
     private String runSimulator(String... commands) {
         List<String> output = Stream.of(commands)
-                .map(new Sanitizer())
+                .map(new Sanitiser())
                 .map(new CommandParser())
                 .map(this.robot)
                 .filter(transition -> transition.by() instanceof ReportCommand)

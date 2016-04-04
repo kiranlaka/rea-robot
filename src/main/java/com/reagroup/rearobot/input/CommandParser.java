@@ -4,13 +4,15 @@ import com.reagroup.rearobot.command.*;
 import com.reagroup.rearobot.configuration.Orientation;
 
 import java.util.function.Function;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by dchrist on 04.04.2016.
+ * Turns a command string read from the input source into a programmatic command object.
  */
 public class CommandParser implements Function<String, Command> {
+    private final static Logger LOGGER = Logger.getLogger(CommandParser.class.getName());
 
     private static final String LEFT = "LEFT";
     private static final String MOVE = "MOVE";
@@ -23,10 +25,17 @@ public class CommandParser implements Function<String, Command> {
     private static final String SOUTH = "SOUTH";
     private static final String WEST = "WEST";
 
+    /**
+     * Turn an input command string into a command object.
+     *
+     * @param commandString The command in string form.
+     * @return The corresponding command object or a null-command in a fault case.
+     */
     @Override
     public Command apply(String commandString) {
         if (commandString == null || commandString.isEmpty()) {
-            throw new IllegalArgumentException("Empty command");
+            LOGGER.warning("Empty command");
+            return new NullCommand();
         } else if (commandString.equals(LEFT)) {
             return new LeftCommand();
         } else if (commandString.equals(MOVE)) {
@@ -38,20 +47,31 @@ public class CommandParser implements Function<String, Command> {
         } else if (commandString.equals(RIGHT)) {
             return new RightCommand();
         } else {
-            throw new IllegalArgumentException("Unknown command: " + commandString);
+            LOGGER.warning("Unknown command: " + commandString + "; doing nothing.");
+            return new NullCommand();
         }
     }
 
     private Command parsePlaceCommand(String commandString) {
         Matcher matcher = PLACE_REGEX.matcher(commandString);
         if (matcher.matches()) {
+            return producePlaceCommand(matcher);
+        } else {
+            LOGGER.warning("Unknown command: " + commandString + "; doing nothing.");
+            return new NullCommand();
+        }
+    }
+
+    private Command producePlaceCommand(Matcher matcher) {
+        try {
             return new PlaceCommand(
                     Integer.parseInt(matcher.group(1)),
                     Integer.parseInt(matcher.group(2)),
                     this.parsePlaceCommandOrientation(matcher.group(3))
             );
-        } else {
-            throw new IllegalArgumentException("Unknown command: " + commandString);
+        } catch (IllegalArgumentException e) {
+            LOGGER.warning(e.getMessage());
+            return new NullCommand();
         }
     }
 

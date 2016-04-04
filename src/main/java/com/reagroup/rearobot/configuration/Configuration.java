@@ -1,7 +1,7 @@
 package com.reagroup.rearobot.configuration;
 
 /**
- * Created by dchrist on 04.04.2016.
+ * Immutable data object representing a position and an orientation.
  */
 public class Configuration {
 

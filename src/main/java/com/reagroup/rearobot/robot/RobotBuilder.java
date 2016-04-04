@@ -5,7 +5,11 @@ import com.reagroup.rearobot.configuration.Orientation;
 import com.reagroup.rearobot.configuration.Position;
 
 /**
- * Created by dchrist on 04.04.2016.
+ * Builder to create the toy robot for the simulator.
+ *
+ * As only the boundary is mandatory it could have been provided though the constructor.
+ * Also the initial configuration can be set through a place command.
+ * As a result, builder pattern is rather oversized here, but shows I know yet another pattern ;-)
  */
 public class RobotBuilder {
 

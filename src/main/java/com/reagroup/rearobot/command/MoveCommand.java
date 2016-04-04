@@ -2,10 +2,11 @@ package com.reagroup.rearobot.command;
 
 import com.reagroup.rearobot.configuration.Configuration;
 
-/**
- * Created by dchrist on 04.04.2016.
- */
+import java.util.logging.Logger;
+
 public class MoveCommand implements Command {
+    private final static Logger LOGGER = Logger.getLogger(MoveCommand.class.getName());
+
     @Override
     public Configuration apply(Configuration configuration) {
         switch (configuration.orientation()) {
@@ -18,7 +19,8 @@ public class MoveCommand implements Command {
             case WEST:
                 return new Configuration(configuration.position().x() - 1, configuration.position().y(), configuration.orientation());
             default:
-                throw new IllegalStateException("Orientation unknown: " + configuration.orientation());
+                LOGGER.warning("Orientation unknown: " + configuration.orientation() + ", will not move.");
+                return configuration;
         }
     }
 }

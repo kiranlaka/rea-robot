@@ -1,7 +1,12 @@
 package com.reagroup.rearobot.configuration;
 
 /**
- * Created by dchrist on 04.04.2016.
+ * Enum representing the four possible orientations.
+ *
+ * The enum also provided methods to rotate left and right.
+ * This helps to avoid too many switch statements throughout the code,
+ * which is usually considered fragile design (however the four cardinal
+ * points are rather unlikely to be altered in the future...).
  */
 public enum Orientation {
     NORTH,

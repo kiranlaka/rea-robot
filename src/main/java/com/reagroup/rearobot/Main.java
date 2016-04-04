@@ -5,7 +5,7 @@ import com.reagroup.rearobot.configuration.Position;
 import com.reagroup.rearobot.configuration.Transition;
 import com.reagroup.rearobot.input.CommandParser;
 import com.reagroup.rearobot.input.Input;
-import com.reagroup.rearobot.input.Sanitizer;
+import com.reagroup.rearobot.input.Sanitiser;
 import com.reagroup.rearobot.robot.Robot;
 import com.reagroup.rearobot.robot.RobotBuilder;
 
@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Created by dchrist on 04.04.2016.
+ * Toy robot simulator.
  */
 public class Main {
 
@@ -27,7 +27,7 @@ public class Main {
 
     private static void runSimulator(String[] args, Robot robot) {
         new Input().apply(args)
-                .map(new Sanitizer())
+                .map(new Sanitiser())
                 .map(new CommandParser())
                 .map(robot)
                 .filter(transition -> transition.by() instanceof ReportCommand)

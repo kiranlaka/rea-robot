@@ -1,7 +1,8 @@
 package com.reagroup.rearobot.configuration;
 
 /**
- * Created by dchrist on 04.04.2016.
+ * Immutable data object representing a position in two dimensional space
+ * by the means of x and y coordinates.
  */
 public class Position {
 

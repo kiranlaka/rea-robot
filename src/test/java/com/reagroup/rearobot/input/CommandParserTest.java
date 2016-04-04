@@ -8,9 +8,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by dchrist on 04.04.2016.
- */
 public class CommandParserTest {
     private CommandParser commandParser;
     private Configuration dummyConfiguration;

@@ -4,7 +4,8 @@ import com.reagroup.rearobot.configuration.Configuration;
 import com.reagroup.rearobot.configuration.Orientation;
 
 /**
- * Created by dchrist on 04.04.2016.
+ * The place command will output the configuration provided in the constructor,
+ * no matter what the input was.
  */
 public class PlaceCommand implements Command {
 

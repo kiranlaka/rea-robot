@@ -8,9 +8,6 @@ import com.reagroup.rearobot.configuration.Transition;
 
 import java.util.logging.Logger;
 
-/**
- * Created by dchrist on 04.04.2016.
- */
 class RobotImpl implements Robot {
     private final static Logger LOGGER = Logger.getLogger(RobotImpl.class.getName());
     private final Position boundary;

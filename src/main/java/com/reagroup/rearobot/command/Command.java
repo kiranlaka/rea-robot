@@ -5,7 +5,16 @@ import com.reagroup.rearobot.configuration.Configuration;
 import java.util.function.UnaryOperator;
 
 /**
- * Created by dchrist on 04.04.2016.
+ * Commands take an input configuration and transform it to an output configuration,
+ * based on their respective implementation.
  */
 public interface Command extends UnaryOperator<Configuration> {
+    /**
+     * Transform an input configuration.
+     *
+     * @param configuration The input configuration.
+     * @return The altered configuration.
+     */
+    @Override
+    Configuration apply(Configuration configuration);
 }
