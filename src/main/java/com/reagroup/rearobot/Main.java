@@ -32,7 +32,9 @@ public class Main {
                 .map(robot)
                 .filter(transition -> transition.by() instanceof ReportCommand)
                 .map(Transition::to)
-                .forEach(System.out::println);
+                .forEach(configuration -> System.out.println((configuration != null) ?
+                        configuration :
+                        "Not placed yet."));
     }
 
     private static Robot buildRobot() {
