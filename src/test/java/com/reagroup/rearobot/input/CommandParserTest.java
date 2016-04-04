@@ -3,7 +3,6 @@ package com.reagroup.rearobot.input;
 import com.reagroup.rearobot.command.*;
 import com.reagroup.rearobot.configuration.Configuration;
 import com.reagroup.rearobot.configuration.Orientation;
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import org.junit.Before;
 import org.junit.Test;
 

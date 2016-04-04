@@ -12,5 +12,6 @@ import java.util.function.Function;
  */
 public interface Robot extends Function<Command, Transition> {
     Configuration configuration();
+
     Position boundary();
 }

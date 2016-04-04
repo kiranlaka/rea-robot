@@ -25,7 +25,7 @@ public class CommandParser implements Function<String, Command> {
 
     @Override
     public Command apply(String commandString) {
-        if (commandString == null) {
+        if (commandString == null || commandString.isEmpty()) {
             throw new IllegalArgumentException("Empty command");
         } else if (commandString.equals(LEFT)) {
             return new LeftCommand();
@@ -56,7 +56,7 @@ public class CommandParser implements Function<String, Command> {
     }
 
     private Orientation parsePlaceCommandOrientation(String orientationString) {
-        if (orientationString == null) {
+        if (orientationString == null || orientationString.isEmpty()) {
             throw new IllegalArgumentException("Empty orientation");
         } else if (orientationString.equals(NORTH)) {
             return Orientation.NORTH;

@@ -2,12 +2,12 @@ package com.reagroup.rearobot;
 
 import com.reagroup.rearobot.command.ReportCommand;
 import com.reagroup.rearobot.configuration.Position;
+import com.reagroup.rearobot.configuration.Transition;
 import com.reagroup.rearobot.input.CommandParser;
 import com.reagroup.rearobot.input.Input;
 import com.reagroup.rearobot.input.Sanitizer;
 import com.reagroup.rearobot.robot.Robot;
 import com.reagroup.rearobot.robot.RobotBuilder;
-import com.reagroup.rearobot.configuration.Transition;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
