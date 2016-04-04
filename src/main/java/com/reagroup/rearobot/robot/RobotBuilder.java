@@ -13,16 +13,19 @@ public class RobotBuilder {
     private Position boundary;
     private Configuration configuration;
 
-    public void initialPosition(Configuration configuration) {
+    public RobotBuilder initialPosition(Configuration configuration) {
         this.configuration = configuration;
+        return this;
     }
 
-    public void initialPosition(Position position, Orientation orientation) {
-        this.configuration = new Configuration(position, orientation);
+    public RobotBuilder initialPosition(Position position, Orientation orientation) {
+        this.initialPosition(new Configuration(position, orientation));
+        return this;
     }
 
-    public void northEastBoundary(Position position) {
+    public RobotBuilder northEastBoundary(Position position) {
         this.boundary = position;
+        return this;
     }
 
     public Robot build() {
