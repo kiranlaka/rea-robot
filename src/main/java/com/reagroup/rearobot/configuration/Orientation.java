@@ -4,20 +4,10 @@ package com.reagroup.rearobot.configuration;
  * Created by dchrist on 04.04.2016.
  */
 public enum Orientation {
-    NORTH(0),
-    EAST(90),
-    SOUTH(180),
-    WEST(270);
-
-    private int degrees;
-
-    Orientation(int degrees) {
-        this.degrees = degrees;
-    }
-
-    public int degrees() {
-        return this.degrees;
-    }
+    NORTH,
+    EAST,
+    SOUTH,
+    WEST;
 
     public Orientation left() {
         switch (this) {
@@ -30,7 +20,7 @@ public enum Orientation {
             case WEST:
                 return SOUTH;
             default:
-                throw new IllegalStateException("Orientation unknown: " + this + "(" + this.degrees + ")");
+                throw new IllegalStateException("Orientation unknown: " + this);
         }
     }
 
@@ -45,7 +35,7 @@ public enum Orientation {
             case WEST:
                 return NORTH;
             default:
-                throw new IllegalStateException("Orientation unknown: " + this + "(" + this.degrees + ")");
+                throw new IllegalStateException("Orientation unknown: " + this);
         }
     }
 

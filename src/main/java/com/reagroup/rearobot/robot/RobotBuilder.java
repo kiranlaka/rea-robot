@@ -28,8 +28,8 @@ public class RobotBuilder {
     }
 
     public Robot build() {
-        if (this.configuration == null || this.boundary == null) {
-            throw new IllegalStateException("Not all necessary fields are set.");
+        if (this.boundary == null) {
+            throw new IllegalStateException("No boundaries for movement are set.");
         }
         return new RobotImpl(this.configuration, this.boundary);
     }

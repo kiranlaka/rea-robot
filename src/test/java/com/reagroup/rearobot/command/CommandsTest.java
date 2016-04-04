@@ -14,6 +14,7 @@ import static org.junit.Assert.assertEquals;
 public class CommandsTest {
 
     private Configuration configuration;
+    private Configuration placeConfiguration;
     private Command leftCommand;
     private Command moveCommand;
     private Command placeCommand;
@@ -23,9 +24,10 @@ public class CommandsTest {
     @Before
     public void setUp() {
         this.configuration = new Configuration(new Position(2, 2), Orientation.NORTH);
+        this.placeConfiguration = new Configuration(new Position(0, 0), Orientation.SOUTH);
         this.leftCommand = new LeftCommand();
         this.moveCommand = new MoveCommand();
-        this.placeCommand = new PlaceCommand();
+        this.placeCommand = new PlaceCommand(this.placeConfiguration);
         this.reportCommand = new ReportCommand();
         this.rightCommand = new RightCommand();
     }
@@ -44,7 +46,7 @@ public class CommandsTest {
 
     @Test
     public void testPlaceCommand() {
-        assertEquals(new Configuration(2, 2, Orientation.NORTH),
+        assertEquals(this.placeConfiguration,
                 this.placeCommand.apply(this.configuration));
     }
 

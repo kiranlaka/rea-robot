@@ -1,0 +1,91 @@
+package com.reagroup.rearobot.input;
+
+import com.reagroup.rearobot.command.*;
+import com.reagroup.rearobot.configuration.Configuration;
+import com.reagroup.rearobot.configuration.Orientation;
+import com.sun.javaws.exceptions.InvalidArgumentException;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+/**
+ * Created by dchrist on 04.04.2016.
+ */
+public class CommandParserTest {
+    private CommandParser commandParser;
+    private Configuration dummyConfiguration;
+
+    @Before
+    public void setUp() throws Exception {
+        this.commandParser = new CommandParser();
+        this.dummyConfiguration = new Configuration(0, 0, Orientation.NORTH);
+    }
+
+    @Test
+    public void testLeft() throws Exception {
+        Command command = commandParser.apply("LEFT");
+        assertTrue(command instanceof LeftCommand);
+    }
+
+    @Test
+    public void testMove() throws Exception {
+        Command command = commandParser.apply("MOVE");
+        assertTrue(command instanceof MoveCommand);
+    }
+
+    @Test
+    public void testPlace() throws Exception {
+        Command command = commandParser.apply("PLACE 0,0,NORTH");
+        assertTrue(command instanceof PlaceCommand);
+    }
+
+    @Test
+    public void testReport() throws Exception {
+        Command command = commandParser.apply("REPORT");
+        assertTrue(command instanceof ReportCommand);
+    }
+
+    @Test
+    public void testRight() throws Exception {
+        Command command = commandParser.apply("RIGHT");
+        assertTrue(command instanceof RightCommand);
+    }
+
+    @Test
+    public void testValidPlaceA() throws Exception {
+        Command command = commandParser.apply("PLACE 0,0,NORTH");
+        Configuration configuration = command.apply(this.dummyConfiguration);
+        assertEquals(new Configuration(0, 0, Orientation.NORTH), configuration);
+    }
+
+    @Test
+    public void testValidPlaceB() throws Exception {
+        Command command = commandParser.apply("PLACE 2,3,SOUTH");
+        Configuration configuration = command.apply(this.dummyConfiguration);
+        assertEquals(new Configuration(2, 3, Orientation.SOUTH), configuration);
+    }
+
+    @Test
+    public void testValidPlaceC() throws Exception {
+        Command command = commandParser.apply("PLACE 4,2,EAST");
+        Configuration configuration = command.apply(this.dummyConfiguration);
+        assertNotEquals(new Configuration(2, 4, Orientation.WEST), configuration);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testInvalidPlaceA() throws Exception {
+        commandParser.apply("PLACE4,2,EAST");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testInvalidPlaceB() throws Exception {
+        commandParser.apply("PLACE 4, 2,EAST");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testInvalidPlaceC() throws Exception {
+        commandParser.apply("PLACE 4,2,HUBWARD");
+    }
+
+}
