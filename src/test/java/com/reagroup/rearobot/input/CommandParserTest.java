@@ -69,19 +69,25 @@ public class CommandParserTest {
         assertNotEquals(new Configuration(2, 4, Orientation.WEST), configuration);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testInvalidPlaceA() throws Exception {
-        commandParser.apply("PLACE4,2,EAST");
+        Command command = commandParser.apply("PLACE4,2,EAST");
+        Configuration configuration = command.apply(this.dummyConfiguration);
+        assertEquals(this.dummyConfiguration, configuration);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testInvalidPlaceB() throws Exception {
-        commandParser.apply("PLACE 4, 2,EAST");
+        Command command = commandParser.apply("PLACE 4, 2,EAST");
+        Configuration configuration = command.apply(this.dummyConfiguration);
+        assertEquals(this.dummyConfiguration, configuration);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testInvalidPlaceC() throws Exception {
-        commandParser.apply("PLACE 4,2,HUBWARD");
+        Command command = commandParser.apply("PLACE 4,2,HUBWARD");
+        Configuration configuration = command.apply(this.dummyConfiguration);
+        assertEquals(this.dummyConfiguration, configuration);
     }
 
 }
