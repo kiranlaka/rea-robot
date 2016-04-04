@@ -1,7 +1,6 @@
 package com.reagroup.rearobot.command;
 
 import com.reagroup.rearobot.configuration.Configuration;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Created by dchrist on 04.04.2016.
@@ -9,6 +8,6 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 public class PlaceCommand implements Command {
     @Override
     public Configuration apply(Configuration configuration) {
-        throw new NotImplementedException();
+        return configuration;
     }
 }

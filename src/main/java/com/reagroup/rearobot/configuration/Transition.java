@@ -1,7 +1,6 @@
 package com.reagroup.rearobot.configuration;
 
 import com.reagroup.rearobot.command.Command;
-import com.reagroup.rearobot.configuration.Configuration;
 
 /**
  * Created by dchrist on 04.04.2016.

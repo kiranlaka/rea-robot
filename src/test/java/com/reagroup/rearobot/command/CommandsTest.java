@@ -1,0 +1,63 @@
+package com.reagroup.rearobot.command;
+
+import com.reagroup.rearobot.configuration.Configuration;
+import com.reagroup.rearobot.configuration.Orientation;
+import com.reagroup.rearobot.configuration.Position;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+/**
+ * Created by dchrist on 04.04.2016.
+ */
+public class CommandsTest {
+
+    private Configuration configuration;
+    private Command leftCommand;
+    private Command moveCommand;
+    private Command placeCommand;
+    private Command reportCommand;
+    private Command rightCommand;
+
+    @Before
+    public void setUp() {
+        this.configuration = new Configuration(new Position(2, 2), Orientation.NORTH);
+        this.leftCommand = new LeftCommand();
+        this.moveCommand = new MoveCommand();
+        this.placeCommand = new PlaceCommand();
+        this.reportCommand = new ReportCommand();
+        this.rightCommand = new RightCommand();
+    }
+
+    @Test
+    public void testLeftCommand() {
+        assertEquals(new Configuration(2, 2, Orientation.WEST),
+                this.leftCommand.apply(this.configuration));
+    }
+
+    @Test
+    public void testMoveCommand() {
+        assertEquals(new Configuration(2, 3, Orientation.NORTH),
+                this.moveCommand.apply(this.configuration));
+    }
+
+    @Test
+    public void testPlaceCommand() {
+        assertEquals(new Configuration(2, 2, Orientation.NORTH),
+                this.placeCommand.apply(this.configuration));
+    }
+
+    @Test
+    public void testReportCommand() {
+        assertEquals(new Configuration(2, 2, Orientation.NORTH),
+                this.reportCommand.apply(this.configuration));
+    }
+
+    @Test
+    public void testRightCommand() {
+        assertEquals(new Configuration(2, 2, Orientation.EAST),
+                this.rightCommand.apply(this.configuration));
+    }
+
+}

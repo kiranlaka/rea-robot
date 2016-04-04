@@ -22,6 +22,26 @@ public class Position {
     }
 
     @Override
+    public int hashCode() {
+        int result = 46;
+        result = 31 * result + this.x();
+        result = 31 * result + this.y();
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Position)) {
+            return false;
+        }
+        Position pos = (Position) obj;
+        return this.x() == pos.x() && this.y() == pos.y();
+    }
+
+    @Override
     public String toString() {
         return "(" + this.x() + ", " + this.y() + ")";
     }

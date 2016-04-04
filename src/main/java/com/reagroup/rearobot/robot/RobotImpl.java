@@ -13,9 +13,8 @@ import java.util.logging.Logger;
  */
 class RobotImpl implements Robot {
     private final static Logger LOGGER = Logger.getLogger(RobotImpl.class.getName());
-
-    private Configuration configuration;
     private final Position boundary;
+    private Configuration configuration;
 
     RobotImpl(Configuration configuration, Position boundary) {
         this.boundary = boundary;

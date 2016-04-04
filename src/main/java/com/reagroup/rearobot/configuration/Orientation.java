@@ -48,4 +48,5 @@ public enum Orientation {
                 throw new IllegalStateException("Orientation unknown: " + this + "(" + this.degrees + ")");
         }
     }
+
 }
