@@ -1,8 +1,6 @@
 package com.reagroup.rearobot;
 
 import com.reagroup.rearobot.command.ReportCommand;
-import com.reagroup.rearobot.configuration.Configuration;
-import com.reagroup.rearobot.configuration.Orientation;
 import com.reagroup.rearobot.configuration.Position;
 import com.reagroup.rearobot.input.CommandParser;
 import com.reagroup.rearobot.input.Input;
@@ -19,8 +17,7 @@ import java.util.logging.Logger;
  */
 public class Main {
 
-    private static final Position BOUNDARY = new Position(5, 5);
-    private static final Configuration START_CONFIGURATION = new Configuration(new Position(0, 0), Orientation.NORTH);
+    private static final Position BOUNDARY = new Position(4, 4);
 
     public static void main(String[] args) {
         setUpLogging();
@@ -40,8 +37,7 @@ public class Main {
 
     private static Robot buildRobot() {
         return new RobotBuilder()
-                .initialConfiguration(START_CONFIGURATION)
-                .northEastBoundary(BOUNDARY)
+                .mandatoryNorthEastBoundary(BOUNDARY)
                 .build();
     }
 

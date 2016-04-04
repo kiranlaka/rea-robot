@@ -2,6 +2,8 @@
 
 A simple simulator representing a toy robot moving on a tabletop.
 
+For further explanation to design an approach see `SOLUTION.md`.
+
 ## Example usage
 
 Invoke the toy robot simulator as follows:

@@ -12,17 +12,17 @@ public class RobotBuilder {
     private Position boundary;
     private Configuration configuration;
 
-    public RobotBuilder initialConfiguration(Configuration configuration) {
+    public RobotBuilder optionalInitialConfiguration(Configuration configuration) {
         this.configuration = configuration;
         return this;
     }
 
-    public RobotBuilder initialConfiguration(Position position, Orientation orientation) {
-        this.initialConfiguration(new Configuration(position, orientation));
+    public RobotBuilder optionalInitialConfiguration(Position position, Orientation orientation) {
+        this.optionalInitialConfiguration(new Configuration(position, orientation));
         return this;
     }
 
-    public RobotBuilder northEastBoundary(Position position) {
+    public RobotBuilder mandatoryNorthEastBoundary(Position position) {
         this.boundary = position;
         return this;
     }
