@@ -48,7 +48,7 @@ public class Configuration {
 
     @Override
     public String toString() {
-        return "Position: " + this.position() + ", Orientation: " + this.orientation();
+        return this.position() + "," + this.orientation();
     }
 
 }
