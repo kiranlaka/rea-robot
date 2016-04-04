@@ -2,7 +2,7 @@
 
 A simple simulator representing a toy robot moving on a tabletop.
 
-For further explanation to design an approach see `SOLUTION.md`.
+For further explanation of design an approach see `SOLUTION.md`.
 
 ## Example usage
 
@@ -12,8 +12,7 @@ Invoke the toy robot simulator as follows:
 java -jar rea-robot-<version>.jar [commands.txt]
 ```
 
-The simulator can be invoked with an optional
-plain text file containing commands, one command per line.
+The simulator can be invoked with a plain text file containing commands, one command per line.
 If no command file is given, commands are read form `sdtin`.
 
 For a specification of the commands and on how the robot reacts to them, see `PROBLEM.md`.
@@ -27,9 +26,9 @@ The built JAR along with sample inputs can be found in the `./target/` directory
 
 ### Test
 
-Building with `mvn clean package` already runs unit tests.
+Building with `mvn clean package` already runs the unit tests.
 
-`mvn clean verify` also runs integration tests, but none are present as of yet.
+`mvn clean verify` would also run integration tests, but none are present as of yet.
 
 ## Author
 
