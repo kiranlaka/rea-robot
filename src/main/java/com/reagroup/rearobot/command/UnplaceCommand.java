@@ -3,7 +3,7 @@ package com.reagroup.rearobot.command;
 import com.reagroup.rearobot.configuration.Configuration;
 
 /**
- * Created by dchrist on 06.04.2016.
+ * Possible, but yet unused command to take the robot off the tabletop.
  */
 public class UnPlaceCommand implements Command {
     @Override
