@@ -21,11 +21,6 @@ class RobotImpl implements Robot {
 
     @Override
     public Transition apply(Command command) {
-        if (this.configuration == null && !(command instanceof PlaceCommand)) {
-            LOGGER.info("Not placed yet, skipping command.");
-            return new Transition(null, command, null);
-        }
-
         Configuration oldConfiguration = this.configuration;
         Configuration newConfiguration = command.apply(this.configuration);
 
@@ -54,6 +49,12 @@ class RobotImpl implements Robot {
     }
 
     private boolean isValidConfiguration(Configuration configuration) {
+        // Not being placed at all is valid.
+        if (configuration == null) {
+            return true;
+        }
+
+        // Else check boundary.
         Position position = configuration.position();
         return position.x() >= 0 &&
                 position.y() >= 0 &&

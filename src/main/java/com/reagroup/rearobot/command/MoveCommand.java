@@ -4,11 +4,11 @@ import com.reagroup.rearobot.configuration.Configuration;
 
 import java.util.logging.Logger;
 
-public class MoveCommand implements Command {
+public class MoveCommand extends AbstractCommand {
     private final static Logger LOGGER = Logger.getLogger(MoveCommand.class.getName());
 
     @Override
-    public Configuration apply(Configuration configuration) {
+    public Configuration applyInternal(Configuration configuration) {
         switch (configuration.orientation()) {
             case NORTH:
                 return new Configuration(configuration.position().x(), configuration.position().y() + 1, configuration.orientation());

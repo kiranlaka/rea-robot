@@ -2,9 +2,9 @@ package com.reagroup.rearobot.command;
 
 import com.reagroup.rearobot.configuration.Configuration;
 
-public class RightCommand implements Command {
+public class RightCommand extends AbstractCommand {
     @Override
-    public Configuration apply(Configuration configuration) {
+    public Configuration applyInternal(Configuration configuration) {
         return new Configuration(configuration.position(), configuration.orientation().right());
     }
 }
