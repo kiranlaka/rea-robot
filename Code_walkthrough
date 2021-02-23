@@ -1,0 +1,20 @@
+application execution starts from RobotDemo 
+it will intialize table with 5,5 dimension and robot class (line 8&9)
+line 11 - it will read input from command prompt (EX: PLACE 0,0,NORTH)
+line (16 to 19) - it will read input and split it and take command and directionstring
+        if we give command as EXit ,it wll stop the excution (line -20)
+		
+after reading input control will go to RobotSimulator class  (line-24)
+line - 18  it return command enum from input string 
+line - 19 - based on command it will excute some in command enum. here we will update new position and robot direction 
+             and return new position
+line - 20 &23 - if position is invalid means and x, y values are greater than 5(In requirement they mention table dimension should be 5,5 ) or less than 0,then we are throwing error	
+
+Controll will go to Command class based on command enum we are doing respection operation means .
+line - 10 & 24 - PLACE - we are updating x,y and direction from input string 
+line 27 & 30 - MOVE - based on direction we are moving robot position, means we are updating x, y values in direction enum class 		 
+
+line 34&37 - LEFT - if command is left based current robot direction ,we are updating with new direction ,you can see the code in direction Enum
+line 40&45  - RIGHT - same as above
+
+line 50&54 - REPORT - it will print the current position of robot and direction.
